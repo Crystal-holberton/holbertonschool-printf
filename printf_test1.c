@@ -7,8 +7,24 @@
  */
 int _printf(const char *format, ...)
 {
-	int len = 0;
-	va_list arg_list;
-	va_start(arg_list, format);
+	unsigned int i, count = 0;
 
+	va_list args;
 
+	va_start(args, format);
+
+	i = 0;
+	while (format[i] != '\0')
+	{
+		if (format[i] != '%')
+		{
+			_putchar(format[i]);
+		}
+		else
+		{
+		}
+		i++;
+	}
+	va_end(args);
+	return (count);
+}
