@@ -1,5 +1,20 @@
 #include "main.h"
 
+int _putchar(char c);
+int print_string(char *str);
+
+/**
+ * _putchar - writes the character c to stdout
+ * @c: The character to print
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
+}
+
 /**
  * print_string - prints a string to stdout
  * @str: string to print
@@ -44,13 +59,13 @@ int _printf(const char *format, ...)
 			{
 			case 'c':
 				count += _putchar(va_arg(args, int));
-			break;
+				break;
 			case 's':
-				count += _putchar(va_arg(args, char *));
-			break;
+				count += print_string(va_arg(args, char *));
+				break;
 			case '%':
 				count += _putchar('%');
-			break;
+				break;
 			default:
 				count += _putchar('%') + _putchar(format[i]);
 			}

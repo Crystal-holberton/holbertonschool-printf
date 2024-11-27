@@ -6,14 +6,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-/**
- * _printf - produces output according to a format
- * @format: is a character string
- * Return: number of characters printed
- */
-
+int _printf(const char *format, ...);
 int _putchar(char c);
 int print_string(char *str);
-int _printf(const char *format, ...);
 
 #endif
