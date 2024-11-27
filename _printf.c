@@ -20,7 +20,7 @@ int print_string(char *str)
 	return (count);
 }
 /**
- * print_int - prints an integer to stdout
+ * print_number - prints an integer to stdout
  * @n: integer to print
  * Return: the number of characters printed
  */
