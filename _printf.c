@@ -29,21 +29,40 @@ int print_number(int n)
     int count = 0;
     unsigned int num;
 
-    if (n < 0)  // Handle negative numbers
+    // Handle negative numbers
+    if (n < 0)
     {
         count += _putchar('-');
-        num = -n;
+        num = -n;  // Make n positive for easier digit handling
     }
     else
     {
         num = n;
     }
 
-    // Print digits using recursion
-    if (num / 10)
-        count += print_number(num / 10);
+    // Handle the special case when n is 0
+    if (num == 0)
+    {
+        count += _putchar('0');
+        return count;
+    }
 
-    count += _putchar((num % 10) + '0');  // Print the last digit
+    // Array to store the digits
+    int digits[10];
+    int digit_count = 0;
+
+    // Extract digits from the number
+    while (num > 0)
+    {
+        digits[digit_count++] = num % 10;  // Store the last digit
+        num /= 10;  // Reduce the number
+    }
+
+    // Print the digits in reverse order (most significant digit first)
+    for (int i = digit_count - 1; i >= 0; i--)
+    {
+        count += _putchar(digits[i] + '0');  // Convert digit to char and print
+    }
 
     return count;
 }
