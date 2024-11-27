@@ -24,7 +24,7 @@ int print_string(char *str)
  * @n: integer to print
  * Return: the number of characters printed
  */
-int print_int(int n)
+int print_numbers(int n)
 {
     int count = 0;
     int temp = n;
@@ -70,7 +70,7 @@ int handle_form(char format, va_list args)
 		break;
         case 'd':
         case 'i':
-                count += print_int(va_arg(args, int));
+                count += print_numbers(va_arg(args, int));
         break;
 	case '%':
 		count += _putchar('%');
@@ -103,7 +103,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			if (!format[i + 1])
+			if (format[i + 1] == '\0')
 			{
 				return (-1);
 			}
