@@ -21,6 +21,35 @@ int print_string(char *str)
 }
 
 /**
+ * handle_form - handles format specifiers
+ * @format: specifier
+ * @args: arguments
+ * Return: Character count printed
+ */
+int handle_form(char format, va_list args)
+{
+	int count = 0;
+
+	switch (format)
+	{
+	case 'c':
+		count += _putchar(va_arg(args, int));
+		break;
+	case 's':
+		count += print_string(va_arg(args, char *));
+		break;
+	case '%':
+		count += _putchar('%');
+		break;
+	default:
+		count += _putchar('%');
+		count += _putchar(format);
+		break;
+	}
+	return (count);
+}
+
+/**
  * _printf - produces output according to a format
  * @format: is a character string
  * Return: the number of characters printed
@@ -40,21 +69,13 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			switch (format[++i])
+			i++;
+			if (!format[i])
 			{
-			case 'c':
-				count += _putchar(va_arg(args, int));
-				break;
-			case 's':
-				count += print_string(va_arg(args, char *));
-				break;
-			case '%':
-				count += _putchar('%');
-				break;
-			default:
-				count += _putchar('%');
-			       	_putchar(format[i]);
+				va_end(args);
+				return (-1);
 			}
+			count += handle_form(format[++i], args);
 		}
 		else
 		{
