@@ -26,29 +26,25 @@ int print_string(char *str)
  */
 int print_number(int n)
 {
-    int count = 0;
-    int temp = n;
-    int divisor = 1;
+	int count = 0;
+	unsigned int num;
 
-    if (n < 0)
-    {
-        count += _putchar('-');
-        n = -n;
-    }
+	if (n < 0)
+	{
+		count += _putchar('-');
+		num = -n;
+	}
+	else
+	{
+		num = n;
+	}
+	if (num / 10)
+	{
+		count += print_number(num / 10);
+	}
+	count += _putchar((num % 10) + '0');
 
-    /* Find the highest power of 10 less than or equal to n */
-    while (temp / divisor >= 10)
-        divisor *= 10;
-
-    /* Print each digit of the number */
-    while (divisor > 0)
-    {
-        count += _putchar((n / divisor) + '0');
-        n %= divisor;
-        divisor /= 10;
-    }
-
-    return (count);
+	return (count);
 }
 /**
  * handle_form - handles format specifiers
@@ -68,10 +64,10 @@ int handle_form(char format, va_list args)
 	case 's':
 		count += print_string(va_arg(args, char *));
 		break;
-        case 'd':
-        case 'i':
-                count += print_number(va_arg(args, int));
-        break;
+	case 'd':
+	case 'i':
+		count += print_number(va_arg(args, int));
+	break;
 	case '%':
 		count += _putchar('%');
 		break;
