@@ -24,7 +24,7 @@ int print_string(char *str)
  * @n: integer to print
  * Return: the number of characters printed
  */
-int print_numbers(int n)
+int print_number(int n)
 {
     int count = 0;
     int temp = n;
