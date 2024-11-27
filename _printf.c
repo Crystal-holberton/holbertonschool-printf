@@ -69,10 +69,8 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			i++;
-			if (!format[i])
+			if (!format[i + 1])
 			{
-				va_end(args);
 				return (-1);
 			}
 			count += handle_form(format[++i], args);
