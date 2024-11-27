@@ -20,6 +20,37 @@ int print_string(char *str)
 	return (count);
 }
 /**
+ * print_int - prints an integer to stdout
+ * @n: integer to print
+ * Return: the number of characters printed
+ */
+int print_int(int n)
+{
+    int count = 0;
+    int temp = n;
+    int divisor = 1;
+
+    if (n < 0)
+    {
+        count += _putchar('-');
+        n = -n;
+    }
+
+    /* Find the highest power of 10 less than or equal to n */
+    while (temp / divisor >= 10)
+        divisor *= 10;
+
+    /* Print each digit of the number */
+    while (divisor > 0)
+    {
+        count += _putchar((n / divisor) + '0');
+        n %= divisor;
+        divisor /= 10;
+    }
+
+    return (count);
+}
+/**
  * handle_form - handles format specifiers
  * @format: specifier
  * @args: arguments
@@ -37,6 +68,10 @@ int handle_form(char format, va_list args)
 	case 's':
 		count += print_string(va_arg(args, char *));
 		break;
+        case 'd':
+        case 'i':
+                count += print_int(va_arg(args, int));
+        break;
 	case '%':
 		count += _putchar('%');
 		break;
