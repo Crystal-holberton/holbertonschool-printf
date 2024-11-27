@@ -27,44 +27,28 @@ int print_string(char *str)
 int print_number(int n)
 {
     int count = 0;
-    unsigned int num;
+    int temp = n;
+    int divisor = 1;
 
-    // Handle negative numbers
     if (n < 0)
     {
         count += _putchar('-');
-        num = -n;  // Make n positive for easier digit handling
+        n = -n;
     }
-    else
+
+    /* Find the highest power of 10 less than or equal to n */
+    while (temp / divisor >= 10)
+        divisor *= 10;
+
+    /* Print each digit of the number */
+    while (divisor > 0)
     {
-        num = n;
+        count += _putchar((n / divisor) + '0');
+        n %= divisor;
+        divisor /= 10;
     }
 
-    // Handle the special case when n is 0
-    if (num == 0)
-    {
-        count += _putchar('0');
-        return count;
-    }
-
-    // Array to store the digits
-    int digits[10];
-    int digit_count = 0;
-
-    // Extract digits from the number
-    while (num > 0)
-    {
-        digits[digit_count++] = num % 10;  // Store the last digit
-        num /= 10;  // Reduce the number
-    }
-
-    // Print the digits in reverse order (most significant digit first)
-    for (int i = digit_count - 1; i >= 0; i--)
-    {
-        count += _putchar(digits[i] + '0');  // Convert digit to char and print
-    }
-
-    return count;
+    return (count);
 }
 /**
  * handle_form - handles format specifiers
