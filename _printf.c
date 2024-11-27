@@ -27,28 +27,25 @@ int print_string(char *str)
 int print_number(int n)
 {
     int count = 0;
-    int temp = n;
-    int divisor = 1;
+    unsigned int num;
 
-    if (n < 0)
+    if (n < 0)  // Handle negative numbers
     {
         count += _putchar('-');
-        n = -n;
+        num = -n;
     }
-
-    /* Find the highest power of 10 less than or equal to n */
-    while (temp / divisor >= 10)
-        divisor *= 10;
-
-    /* Print each digit of the number */
-    while (divisor > 0)
+    else
     {
-        count += _putchar((n / divisor) + '0');
-        n %= divisor;
-        divisor /= 10;
+        num = n;
     }
 
-    return (count);
+    // Print digits using recursion
+    if (num / 10)
+        count += print_number(num / 10);
+
+    count += _putchar((num % 10) + '0');  // Print the last digit
+
+    return count;
 }
 /**
  * handle_form - handles format specifiers
