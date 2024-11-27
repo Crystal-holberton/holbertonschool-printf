@@ -13,6 +13,7 @@
  */
 
 int _putchar(char c);
+int print_string(char *str);
 int _printf(const char *format, ...);
 
 #endif
