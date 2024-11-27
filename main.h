@@ -10,6 +10,6 @@ int _printf(const char *format, ...);
 int _putchar(char c);
 int print_string(char *str);
 int handle_form(char format, va_list args);
-int print_int(int n);
+int print_number(int n);
 
 #endif
