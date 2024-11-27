@@ -70,7 +70,7 @@ int handle_form(char format, va_list args)
 		break;
         case 'd':
         case 'i':
-                count += print_numbers(va_arg(args, int));
+                count += print_number(va_arg(args, int));
         break;
 	case '%':
 		count += _putchar('%');
