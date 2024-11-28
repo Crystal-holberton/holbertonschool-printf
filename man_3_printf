@@ -1,0 +1,18 @@
+_printf(3) - Linux man page
+
+Name:
+printf
+
+Synopsis:
+#include "main.h"
+
+int _printf(const char *format, ...);
+
+Description:
+The function _printf() produces an output according to a format and writes the output to stdout, the standard output stream.
+Upon successful return, this function returns the number of characters printed. This excludes the null byte used to end output strings.
+If an output error occurs, a negative value is returned.
+
+The format string is composed of zero or more ordinary characters (not %), which are copied unchanged to the output.
+In this function certain conversion specifications result in fetching zero or more subsequent arguments.
+
