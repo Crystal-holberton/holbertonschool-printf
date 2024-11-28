@@ -13,6 +13,28 @@ The function _printf() produces an output according to a format and writes the o
 Upon successful return, this function returns the number of characters printed. This excludes the null byte used to end output strings.
 If an output error occurs, a negative value is returned.
 
-The format string is composed of zero or more ordinary characters (not %), which are copied unchanged to the output.
-In this function certain conversion specifications result in fetching zero or more subsequent arguments.
+The format string is a character string. The format string is composed of zero or more directives.
+Ordinary characters, not including %, are copied unchanged to the output stream.
+Conversion specifiers result in fetching zero or more subsequent arguments.
+
+The Conversion Specifiers:
+c
+The int argument is converted to an unsigned char, resulting in printing a single character.
+
+s
+The const char * argument is expected to be a pointer to an array of character type or a string.
+This conversion specifier calls print_string to print a string excluding the ending null byte ('\0') of the string.
+
+%
+A literal '%' is written and no argument is given. Complete conversion is'%%'.
+
+d, i
+An integer argument is converted to a signed decimal. This conversion specifier calls print_number to print an integer.
+
+Notes:
+This function is a simplified version of the printf function and should not be used as a substitute.
+Only the conversion specifiers c, s, %, d, and i are used by this function and therefore other specifiers will be printed as characters or null.
+A _putchar.c file is incorporated with the _printf.c file to enable printing of the printf function.
+
+Example:
 
