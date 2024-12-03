@@ -1,7 +1,7 @@
 _printf(3) - Linux man page
 
 Name:
-printf
+_printf
 
 Synopsis:
 #include "main.h"
@@ -88,4 +88,7 @@ Len:[12]
 Len:[12]
 
 Reference:
-man 3 printf
+ 3 printf
+
+Authors:
+Crystal and Santana
